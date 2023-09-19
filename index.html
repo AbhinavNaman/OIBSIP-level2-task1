@@ -93,11 +93,11 @@
         }
 
         .displayBox-mat {
-            width: 420px;
+            width: 400px;
             padding: 20px;
             background-color: #279EFF;
             border: 0;
-            font-size: 30px;
+            font-size: 28px;
             margin: 0;
             box-shadow: inset;
         }
@@ -106,7 +106,7 @@
             width: 50px;
             height: 50px;
             margin: 5px;
-            font-size: 18px;
+            font-size: 12px;
             cursor: pointer;
             border-radius: 5px;
             border: 0;
@@ -211,7 +211,7 @@
     <div id="neuomorphic" class="tabcontent ">
         <div class="calculator-neu">
             <div>
-                <input type="text" id="display" readonly class="displayBox-neu">
+                <input type="text" id="display-neu" readonly class="displayBox-neu">
             </div>
             <br>
             <br>
@@ -261,7 +261,7 @@
     <div id="flatStyle" class="tabcontent">
         <div class="calculator-flat">
             <div>
-                <input type="text" id="display" class="displayBox-flat" readonly>
+                <input type="text" id="display-flat" class="displayBox-flat" readonly>
             </div>
             <br>
             <br>
@@ -311,7 +311,7 @@
     <div id="materialDesign" class="tabcontent">
         <div class="calculator-mat">
             <div>
-                <input type="text" id="display" class="displayBox-mat" readonly>
+                <input type="text" id="display-mat" class="displayBox-mat" readonly>
             </div>
             <br>
             <br>
@@ -363,20 +363,32 @@
         document.getElementById("defaultOpen").click();
 
         function appendToDisplay(value) {
-            document.getElementById("display").value += value;
+            document.getElementById("display-neu").value += value;
+            document.getElementById("display-flat").value += value;
+            document.getElementById("display-mat").value += value;
         }
 
         function clearDisplay() {
-            document.getElementById("display").value = "";
+            document.getElementById("display-neu").value = "";
+            document.getElementById("display-flat").value = "";
+            document.getElementById("display-mat").value = "";
         }
 
         function calculateResult() {
             try {
-                const expression = document.getElementById("display").value;
-                const result = eval(expression);
-                document.getElementById("display").value = result;
+                const expression1 = document.getElementById("display-neu").value;
+                const expression2 = document.getElementById("display-flat").value;
+                const expression3 = document.getElementById("display-mat").value;
+                const result1 = eval(expression1);
+                const result2 = eval(expression2);
+                const result3 = eval(expression3);
+                document.getElementById("display-neu").value = result1;
+                document.getElementById("display-flat").value = result2;
+                document.getElementById("display-mat").value = result3;
             } catch (error) {
-                document.getElementById("display").value = "Error";
+                document.getElementById("display-neu").value = "Error";
+                document.getElementById("display-flat").value = "Error";
+                document.getElementById("display-mat").value = "Error";
             }
         }
 
